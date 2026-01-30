@@ -6,7 +6,7 @@
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 
-[![Preview do projeto](./src/assets/preview-around.png)](https://perozin.github.io/web_project_around_react/)
+[![Preview do projeto](./src/assets/preview-around.png)](https://perozin.github.io/web_project_around_auth/)
 
 > 🎯 **Clique na imagem acima para acessar o projeto publicado**  
 > 💡 **Click on the image above to access the published project**
@@ -125,9 +125,132 @@ The new architecture now follows:
 
 ---
 
+## 🖼️ Capturas de Tela / Exemplos de Uso - Screenshots / Usage Examples
+
+Abaixo estão exemplos visuais do fluxo de autenticação de usuários implementado no projeto, demonstrando o funcionamento correto das telas de Registro, Login, proteção de rotas e controle de sessão com JWT, conforme solicitado nesta sprint. / Below are visual examples of the user authentication flow implemented in the project, demonstrating the correct functioning of the Registration, Login, route protection, and session control screens with JWT, as requested in this sprint.
+
+### 🔹 Tela de Registro (/signup)
+
+<p align="center">
+  Permite que um novo usuário crie uma conta informando e-mail e senha. / It allows a new user to create an account by providing an email address and password.
+</p>
+
+<p align="center"> 
+  <img src="https://github.com/user-attachments/assets/9c82e6d6-4c1a-45cf-b681-6badb8dace79" 
+    alt="Tela de registro de usuário com campos de e-mail e senha" 
+    width="520" /> 
+</p>
+
+<p align="center">
+  Após o cadastro bem-sucedido, o sistema retorna feedback visual ao usuário e redireciona para a tela de login. / After successful registration, the system provides visual feedback to the user and redirects them to the login screen.
+</p>
+
+<p align="center">
+  <img
+    src="https://github.com/user-attachments/assets/97093e5f-0e45-4297-afa0-ccbf53e37eb2"
+    alt="Tela de registro com sucesso"
+    width="520"
+  />
+</p>
+
+### 🔹 Tela de Login (/signin)
+
+<p align="center">
+  Permite que um usuário previamente cadastrado realize o login. / Allows a previously registered user to log in.  
+</p>
+
+<p align="center"> 
+  <img  src="https://github.com/user-attachments/assets/40dd1513-0940-46b0-a857-3ddf5c4e47d0" 
+    alt="Tela de login de usuário com autenticação via JWT, media screem 1280px" 
+    width="520" 
+  /> 
+</p>
+
+<p align="center">
+  Ao autenticar com sucesso, um token JWT é armazenado no localStorage e o usuário é redirecionado automaticamente para a página principal protegida. / Upon successful authentication, a JWT token is stored in localStorage and the user is automatically redirected to the protected main page. 
+</p>
+
+<p align="center"> 
+  <img   
+    src="https://github.com/user-attachments/assets/2c02ff2c-94fa-4516-9923-648dc723dbdb"
+    alt="Usuário autenticado, redirecionado para a página principal protegida"
+    width="520"  
+  />
+</p>
+
+### 🔹 Proteção de Rotas (ProtectedRoute)
+
+* Rotas sensíveis da aplicação são protegidas por um componente de alto nível (ProtectedRoute). / Sensitive application routes are protected by a high-level component (ProtectedRoute).
+* Usuários não autenticados são automaticamente redirecionados para a tela de login, impedindo acesso direto via URL. /  Unauthenticated users are automatically redirected to the login screen, preventing direct access via URL.
+
+```
+✔️ Usuário autenticado → acesso liberado - Authenticated user → access granted
+❌ Usuário não autenticado → redirecionamento para /signin - Unauthenticated user → redirect to /signin
+
+```
+
+<p align="center"> 
+  <img   
+    src="https://github.com/user-attachments/assets/2b0f8a69-f88b-4a38-bbe2-e3c0be3cb18e"
+    alt="Mensagem rertornada a usuário não autorizado" 
+    width="520"  
+  />
+</p>
+
+### 🔹 Persistência de Sessão com Token JWT / Session Persistence with JWT Token
+
+* Ao recarregar a página, o aplicativo verifica automaticamente a existência e validade do token armazenado: / Upon reloading the page, the application automatically verifies the existence and validity of the stored token:
+
+```
+🔐 Token válido → usuário permanece logado - Valid token → user remains logged in
+🚫 Token inválido ou ausente → logout automático e redirecionamento - Invalid or missing token → automatic logout and redirection
+```
+
+* Esse processo garante segurança, experiência contínua e controle de sessão no front-end. / This process ensures security, a seamless experience, and session control on the front-end.
+
+### 🔹 Header Dinâmico baseado em Autenticação / Dynamic Header based on Authentication
+
+* O cabeçalho da aplicação se adapta dinamicamente ao estado de autenticação: / The application header dynamically adapts to the authentication state:
+
+  * Usuário logado: / Logged-in user:
+
+```
+Exibição do e-mail - Email display
+Botão Sair - Exit button
+```
+
+  * Usuário não logado: / User not logged in:
+
+```
+Links para Entrar ou Registrar - Links to Log In or Register
+```
+
+### 🔹 Feedback Visual de Autenticação (Popup) / Visual Authentication Feedback (Popup)
+
+* O sistema exibe mensagens visuais claras para o usuário em ações críticas: / The system displays clear visual messages to the user during critical actions:
+
+```
+✅ Cadastro realizado com sucesso - Registration successful.
+❌ Erro de autenticação ou cadastro inválido - Authentication error or invalid registration.
+```
+
+* Esses feedbacks são exibidos por meio de um popup reutilizável, controlado centralmente pelo estado do App.jsx. / This feedback is displayed via a reusable popup, centrally controlled by the App.jsx state.
+
+✨ Esse conjunto de telas e fluxos demonstra a implementação completa do ciclo de autenticação no front-end, incluindo: / This set of screens and flows demonstrates the complete implementation of the authentication cycle on the front-end, including:
+
+```
+🔐 Registro de usuário - User registration
+🔑 Login com JWT - Login with JWT
+🛡️ Proteção de rotas - Route protection
+♻️ Persistência de sessão - Session persistence
+🎯 Feedback visual ao usuário - Visual feedback to the user
+```
+
+---
+
 ## 🎥 3. Demonstração / Demo
 
-#### 🎬 [▶️ Assista ao vídeo / Watch the video](https://www.loom.com/share/9f4b63da251f47d2b03a94cfd202466b)
+#### 🎬 [▶️ Assista ao vídeo / Watch the video](https://www.loom.com/share/4b13b900e46144d8b39051a92f9464d0)
 
 ---
 
@@ -166,30 +289,30 @@ The new architecture now follows:
 ## 🏗️ 6. **Estrutura de Arquivos / File Structure (Vite + React)**
 
 ```
-web_project_around_react/
+web_project_around_auth/
+├── docs/                     # Build para GitHub Pages
 ├── public/
-│ └── assets/
 ├── src/
 │ ├── components/
-│ │ ├── Card/
+│ │ ├── App.jsx
 │ │ ├── Header/
 │ │ ├── Footer/
+│ │ ├── Main/
+│ │ ├── Card/
+│ │ ├── Login/
+│ │ ├── Register/
+│ │ ├── ProtectedRoute/
 │ │ ├── Popup/
-│ │ │ ├── Popup.jsx
-│ │ │ ├── PopupImage.jsx
-│ │ │ ├── components/
-│ │ │ │ ├── EditProfile/
-│ │ │ │ ├── NewCard/
-│ │ │ │ └── EditAvatar/
-│ │ ├── Profile/
-│ │ └── Forms/
-│ ├── pages/
-│ │ └── App.jsx
-│ ├── styles/
+│ │ └── InfoTooltip/
 │ ├── utils/
+│ │ ├── auth.js
+│ │ └── api.js
+│ ├── styles/
+│ ├── index.css
 │ └── main.jsx
-├── README.md
-└── vite.config.js
+├── vite.config.js
+└── README.md
+
 ```
 
 ---
@@ -203,29 +326,21 @@ web_project_around_react/
 ✅ Header dinâmico conforme autenticação
 ✅ Feedback visual de sucesso e erro
 ✅ Deploy funcional no GitHub Pages
+✅ Logout funcional
+✅ Componentização total
+✅ Popups controlados por estado
+✅ Responsividade (desktop e mobile)
 ```
 
 ---
 
 ## 🚀 8. **Como Executar / How to Run**
 
-```bash
-# 1️⃣ Clone o repositório / Clone the repository
-git clone https://github.com/Perozin/web_project_around_react.git
-
-# 2️⃣ Acesse a pasta / Access the folder
-cd web_project_around_react
-
-# 3️⃣ Instale as dependências / Install the dependencies.
+```
+git clone https://github.com/Perozin/web_project_around_auth.git
+cd web_project_around_auth
 npm install
-
-# 4️⃣ Rode o servidor de desenvolvimento / Run the development server.
 npm run dev
-```
-
-```
-💡 **O Vite inicia automaticamente na porta exibida no terminal (ex.: http://localhost:5000)**
-💡 **Vite starts automatically on the port displayed in the terminal (e.g., http://localhost:5000)**
 ```
 
 ---
@@ -234,12 +349,13 @@ npm run dev
 
 ### 📌 Autenticação
 
-- 🔐 Implementação completa de autenticação
-- 🛡️ ProtectedRoute para rotas privadas
-- 🧭 Redirecionamento automático
-- 💬 Popup de sucesso e erro
-- 🌍 Ajustes para deploy com HashRouter
-- 🧠 Validação de token no carregamento
+- 🔐 Login e Registro implementados
+- 🔒 ProtectedRoute criado
+- 🧭 React Router configurado
+- 🚪 Logout funcional
+- 📧 Exibição do email do usuário
+- 🌐 Deploy funcional no GitHub Pages
+- 📱 Versão mobile concluída
 
 ---
 
@@ -248,8 +364,9 @@ npm run dev
 - [ ] 🔄 Integração com backend próprio (Node.js / Express)
 - [ ] 🌐 Context API global
 - [ ] 🔐 Refresh Token
-- [ ] 📱 Melhorias na responsividade mobile
+- [ ] 📱 Melhorar UX de erros
 - [ ] 🧪 Testes automatizados
+- [ ] 🧭 useReducer
 
 ---
 
