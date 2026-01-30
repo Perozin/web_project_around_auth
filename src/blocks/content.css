@@ -1,7 +1,6 @@
-/* -------------  MAIN CONTENT  ------------- */
+/* src/blocks/content.css*/
 
 /* -------------  1280  ------------- */
-
 .content {
   max-width: 880px;
   margin: 40px 200px 0;
@@ -9,7 +8,6 @@
 }
 
 /* -------------  1152 ------------- */
-
 @media screen and (max-width: 1152px) {
   .content {
     max-width: 792px;
@@ -18,7 +16,6 @@
 }
 
 /* -------------  1088------------- */
-
 @media screen and (max-width: 1088px) {
   .content {
     max-width: 747.96px;
@@ -27,7 +24,6 @@
 }
 
 /* -------------  1024  ------------- */
-
 @media screen and (max-width: 1024px) {
   .content {
     max-width: 703.9px;
@@ -36,7 +32,6 @@
 }
 
 /* -------------  896 ------------- */
-
 @media screen and (max-width: 896px) {
   .content {
     max-width: 615.91px;
@@ -45,7 +40,6 @@
 }
 
 /* -------------  768 ------------- */
-
 @media screen and (max-width: 768px) {
   .content {
     max-width: 527.89px;
@@ -54,7 +48,6 @@
 }
 
 /* -------------  656  ------------- */
-
 @media screen and (max-width: 656px) {
   .content {
     max-width: 450.87px;
@@ -63,7 +56,6 @@
 }
 
 /* -------------  544  ------------- */
-
 @media screen and (max-width: 544px) {
   .content {
     max-width: 475.82px;
@@ -73,7 +65,6 @@
 }
 
 /* -------------  432  ------------- */
-
 @media screen and (max-width: 432px) {
   .content {
     max-width: 380.66px;
@@ -83,7 +74,6 @@
 }
 
 /* -------------  375  ------------- */
-
 @media screen and (max-width: 375px) {
   .content {
     max-width: 330.44px;
@@ -93,7 +83,6 @@
 }
 
 /* -------------  320  ------------- */
-
 @media screen and (max-width: 320px) {
   .content {
     max-width: 282px;

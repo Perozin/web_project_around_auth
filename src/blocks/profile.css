@@ -1,7 +1,7 @@
+/* src/blocks/profile.css*/
+
 /* -------------  1280  ------------- */
-
 /* profile */
-
 .profile {
   max-width: 880px;
   max-height: 120px;
@@ -11,7 +11,6 @@
 }
 
 /* avatar */
-
 .profile__image {
   max-width: 168.75px;
   max-height: 127.5px;
@@ -23,7 +22,6 @@
 }
 
 /* elipse */
-
 .profile__elipse {
   width: 120px;
   height: 120px;
@@ -43,7 +41,21 @@
   opacity: 0.6;
 }
 
-.profile__edit-vector {
+/* edit-button-avatar */
+.profile__edit-button {
+  max-width: 24px;
+  max-height: 24px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0 0 18px;
+  padding: 0;
+}
+
+.profile__edit-avatar-vector {
   opacity: 0;
   background-color: transparent;
   transform: translate(-50%, -50%);
@@ -54,12 +66,11 @@
   left: 50%;
 }
 
-.profile__edit-vector:hover {
+.profile__edit-avatar-vector:hover {
   opacity: 1;
 }
 
 /* content-info */
-
 .profile__info {
   max-width: 415px;
   max-height: 77px;
@@ -73,7 +84,6 @@
 }
 
 /* name */
-
 .profile__name {
   max-width: 373px;
   font-family: "Inter", Arial, sans-serif;
@@ -90,8 +100,7 @@
   padding: 0;
 }
 
-/* edit-button */
-
+/* edit-button-profile */
 .profile__edit-button {
   max-width: 24px;
   max-height: 24px;
@@ -110,8 +119,7 @@
   cursor: pointer;
 }
 
-/* edit-button-vector */
-
+/* edit-button-profile-vector */
 .profile__edit-button-vector {
   max-width: 10px;
   max-height: 10px;
@@ -126,7 +134,6 @@
 }
 
 /* profession */
-
 .profile__profession {
   max-width: 415px;
   width: 100%;
@@ -144,7 +151,6 @@
 }
 
 /* add-button */
-
 .profile__add-button {
   max-width: 150px;
   max-height: 50px;
@@ -167,7 +173,6 @@
 }
 
 /* add-button-vector */
-
 .profile__add-button-vector {
   max-width: 22px;
   max-height: 22px;
@@ -185,10 +190,8 @@
 }
 
 /* -------------  1152 ------------- */
-
 @media screen and (max-width: 1152px) {
   /* profile */
-
   .profile {
     max-width: 792px;
     max-height: 108px;
@@ -196,7 +199,6 @@
   }
 
   /* avatar */
-
   .profile__image {
     max-width: 151.87px;
     max-height: 114.75px;
@@ -204,7 +206,6 @@
   }
 
   /* elipse */
-
   .profile__elipse {
     max-width: 108px;
     max-height: 108px;
@@ -212,7 +213,6 @@
   }
 
   /* content-info */
-
   .profile__info {
     max-width: 373.5px;
     max-height: 69.3px;
@@ -220,23 +220,20 @@
   }
 
   /* name */
-
   .profile__name {
     max-width: 335.7px;
     font-size: 37.8px;
     line-height: 43.2px;
   }
 
-  /* edit-button */
-
+  /* edit-button-profile */
   .profile__edit-button {
     max-width: 21.6px;
     max-height: 21.6px;
     margin: 13.5px 0 0 16.2px;
   }
 
-  /* edit-button-vector */
-
+  /* edit-button-profile-vector */
   .profile__edit-button-vector {
     max-width: 9px;
     max-height: 9px;
@@ -244,7 +241,6 @@
   }
 
   /* profession */
-
   .profile__profession {
     max-width: 373.5px;
     width: 100%;
@@ -254,7 +250,6 @@
   }
 
   /* add-button */
-
   .profile__add-button {
     max-width: 135px;
     max-height: 45.81px;
@@ -262,7 +257,6 @@
   }
 
   /* add-button-vector */
-
   .profile__add-button-vector {
     max-width: 19.8px;
     max-height: 19.8px;
@@ -270,10 +264,8 @@
 }
 
 /* -------------  1088------------- */
-
 @media screen and (max-width: 1088px) {
   /* profile */
-
   .profile {
     max-width: 747.96px;
     max-height: 101.99px;
@@ -281,7 +273,6 @@
   }
 
   /* avatar */
-
   .profile__image {
     max-width: 143.42px;
     max-height: 108.36px;
@@ -289,7 +280,6 @@
   }
 
   /* elipse */
-
   .profile__elipse {
     max-width: 101.99px;
     max-height: 101.99px;
@@ -297,7 +287,6 @@
   }
 
   /* content-info */
-
   .profile__info {
     max-width: 352.73px;
     max-height: 65.44px;
@@ -305,23 +294,20 @@
   }
 
   /* name */
-
   .profile__name {
     max-width: 317.03px;
     font-size: 35.69px;
     line-height: 40.79px;
   }
 
-  /* edit-button */
-
+  /* edit-button-profile */
   .profile__edit-button {
     max-width: 20.39px;
     max-height: 20.39px;
     margin: 12.74px 0 0 15.29px;
   }
 
-  /* edit-button-vector */
-
+  /* edit-button-profile-vector */
   .profile__edit-button-vector {
     max-width: 8.49px;
     max-height: 8.49px;
@@ -329,7 +315,6 @@
   }
 
   /* profession */
-
   .profile__profession {
     max-width: 352.73px;
     font-size: 15.29px;
@@ -338,7 +323,6 @@
   }
 
   /* add-button */
-
   .profile__add-button {
     max-width: 127.49px;
     max-height: 43.26px;
@@ -346,7 +330,6 @@
   }
 
   /* add-button-vector */
-
   .profile__add-button-vector {
     max-width: 18.69px;
     max-height: 18.69px;
@@ -354,10 +337,8 @@
 }
 
 /* -------------  1024  ------------- */
-
 @media screen and (max-width: 1024px) {
   /* profile */
-
   .profile {
     max-width: 703.9px;
     max-height: 95.28px;
@@ -365,7 +346,6 @@
   }
 
   /* avatar */
-
   .profile__image {
     max-width: 134.97px;
     max-height: 101.97px;
@@ -373,7 +353,6 @@
   }
 
   /* elipse */
-
   .profile__elipse {
     max-width: 95.98px;
     max-height: 95.98px;
@@ -381,7 +360,6 @@
   }
 
   /* content-info */
-
   .profile__info {
     max-width: 331.95px;
     max-height: 60.23px;
@@ -389,23 +367,20 @@
   }
 
   /* name */
-
   .profile__name {
     max-width: 298.35px;
     font-size: 33.58px;
     line-height: 38.38px;
   }
 
-  /* edit-button */
-
+  /* edit-button-profile */
   .profile__edit-button {
     max-width: 19.18px;
     max-height: 19.18px;
     margin: 11.98px 0 0 14.38px;
   }
 
-  /* edit-button-vector */
-
+  /* edit-button-profile-vector */
   .profile__edit-button-vector {
     max-width: 7.98px;
     max-height: 7.98px;
@@ -413,7 +388,6 @@
   }
 
   /* profession */
-
   .profile__profession {
     max-width: 331.95px;
     font-size: 14.38px;
@@ -422,7 +396,6 @@
   }
 
   /* add-button */
-
   .profile__add-button {
     max-width: 119.98px;
     max-height: 40.71px;
@@ -430,7 +403,6 @@
   }
 
   /* add-button-vector */
-
   .profile__add-button-vector {
     max-width: 17.58px;
     max-height: 17.58px;
@@ -438,10 +410,8 @@
 }
 
 /* -------------  896 ------------- */
-
 @media screen and (max-width: 896px) {
   /* profile */
-
   .profile {
     max-width: 615.91px;
     max-height: 83.37px;
@@ -449,7 +419,6 @@
   }
 
   /* avatar */
-
   .profile__image {
     max-width: 118.09px;
     max-height: 89.22px;
@@ -457,7 +426,6 @@
   }
 
   /* elipse */
-
   .profile__elipse {
     max-width: 83.98px;
     max-height: 83.98px;
@@ -465,7 +433,6 @@
   }
 
   /* content-info */
-
   .profile__info {
     max-width: 290.45px;
     max-height: 52.7px;
@@ -473,23 +440,20 @@
   }
 
   /* name */
-
   .profile__name {
     max-width: 261.05px;
     font-size: 29.38px;
     line-height: 33.58px;
   }
 
-  /* edit-button */
-
+  /* edit-button-profile */
   .profile__edit-button {
     max-width: 16.78px;
     max-height: 16.78px;
     margin: 10.48px 0 0 12.58px;
   }
 
-  /* edit-button-vector */
-
+  /* edit-button-profile-vector */
   .profile__edit-button-vector {
     max-width: 6.98px;
     max-height: 6.98px;
@@ -497,7 +461,6 @@
   }
 
   /* profession */
-
   .profile__profession {
     max-width: 290.45px;
     font-size: 12.58px;
@@ -506,7 +469,6 @@
   }
 
   /* add-button */
-
   .profile__add-button {
     max-width: 104.98px;
     max-height: 35.62px;
@@ -514,7 +476,6 @@
   }
 
   /* add-button-vector */
-
   .profile__add-button-vector {
     max-width: 15.12px;
     max-height: 15.12px;
@@ -522,10 +483,8 @@
 }
 
 /* -------------  768 ------------- */
-
 @media screen and (max-width: 768px) {
   /* profile */
-
   .profile {
     max-width: 527.89px;
     max-height: 71.37px;
@@ -533,7 +492,6 @@
   }
 
   /* avatar */
-
   .profile__image {
     max-width: 101.21px;
     max-height: 76.47px;
@@ -541,7 +499,6 @@
   }
 
   /* elipse */
-
   .profile__elipse {
     max-width: 71.97px;
     max-height: 71.97px;
@@ -549,7 +506,6 @@
   }
 
   /* content-info */
-
   .profile__info {
     max-width: 248.94px;
     max-height: 49.45px;
@@ -557,23 +513,20 @@
   }
 
   /* name */
-
   .profile__name {
     max-width: 223.74px;
     font-size: 25.18px;
     line-height: 28.78px;
   }
 
-  /* edit-button */
-
+  /* edit-button-profile */
   .profile__edit-button {
     max-width: 14.38px;
     max-height: 14.38px;
     margin: 8.98px 0 0 10.78px;
   }
 
-  /* edit-button-vector */
-
+  /* edit-button-profile-vector */
   .profile__edit-button-vector {
     max-width: 5.98px;
     max-height: 5.98px;
@@ -581,7 +534,6 @@
   }
 
   /* profession */
-
   .profile__profession {
     max-width: 248.94px;
     font-size: 10.78px;
@@ -590,7 +542,6 @@
   }
 
   /* add-button */
-
   .profile__add-button {
     max-width: 89.97px;
     max-height: 30.52px;
@@ -598,7 +549,6 @@
   }
 
   /* add-button-vector */
-
   .profile__add-button-vector {
     max-width: 12.95px;
     max-height: 12.95px;
@@ -606,10 +556,8 @@
 }
 
 /* -------------  656  ------------- */
-
 @media screen and (max-width: 656px) {
   /* profile */
-
   .profile {
     max-width: 450.87px;
     max-height: 60.95px;
@@ -617,7 +565,6 @@
   }
 
   /* avatar */
-
   .profile__image {
     max-width: 86.44px;
     max-height: 65.31px;
@@ -625,7 +572,6 @@
   }
 
   /* elipse */
-
   .profile__elipse {
     max-width: 61.46px;
     max-height: 61.46px;
@@ -633,7 +579,6 @@
   }
 
   /* content-info */
-
   .profile__info {
     max-width: 212.61px;
     max-height: 42.23px;
@@ -641,23 +586,20 @@
   }
 
   /* name */
-
   .profile__name {
     max-width: 191.09px;
     font-size: 21.5px;
     line-height: 24.58px;
   }
 
-  /* edit-button */
-
+  /* edit-button-profile-vector */
   .profile__edit-button {
     max-width: 12.28px;
     max-height: 12.28px;
     margin: 7.66px 0 0 9.2px;
   }
 
-  /* edit-button-vector */
-
+  /* edit-button-profile-vector */
   .profile__edit-button-vector {
     max-width: 5.1px;
     max-height: 5.1px;
@@ -665,7 +607,6 @@
   }
 
   /* profession */
-
   .profile__profession {
     max-width: 212.61px;
     font-size: 9.2px;
@@ -674,7 +615,6 @@
   }
 
   /* add-button */
-
   .profile__add-button {
     max-width: 76.84px;
     max-height: 26.06px;
@@ -682,7 +622,6 @@
   }
 
   /* add-button-vector */
-
   .profile__add-button-vector {
     max-width: 11.06px;
     max-height: 11.06px;
@@ -690,10 +629,8 @@
 }
 
 /* -------------  544  ------------- */
-
 @media screen and (max-width: 544px) {
   /* profile */
-
   .profile {
     max-width: 475.82px;
     max-height: 482.57px;
@@ -703,24 +640,30 @@
   }
 
   /* avatar */
-
   .profile__image {
     max-width: 243px;
     max-height: 284.73px;
-    width: 100%;
     margin: -6.31px auto 0;
   }
 
   /* elipse */
-
   .profile__elipse {
     max-width: 201.82px;
     max-height: 201.82px;
     margin: 6.31px 44.27px 6.31px 37.95px;
   }
 
-  /* content-info */
+  /* edit-button-avatar */
+  .profile__edit-button-avatar {
+    max-width: 12.63px;
+    max-height: 12.63px;
+    margin: 8.85px;
+    position: absolute;
+    top: 38%;
+    left: 43%;
+  }
 
+  /* content-info */
   .profile__info {
     max-width: 475.82px;
     max-height: 84.36px;
@@ -731,7 +674,6 @@
   }
 
   /* name */
-
   .profile__name {
     max-width: 330.71px;
     font-size: 37.1px;
@@ -740,24 +682,21 @@
     margin: 0 auto;
   }
 
-  /* edit-button */
-
+  /* edit-button-profile */
   .profile__edit-button {
     max-width: 30.36px;
     max-height: 30.36px;
     margin: 6.73px auto 0 16.85px;
   }
 
-  /* edit-button-vector */
-
+  /* edit-button-profile-vector */
   .profile__edit-button-vector {
-    max-width: 12.63px;
-    max-height: 12.63px;
-    margin: 8.85px;
+    max-width: 12.73px;
+    max-height: 12.73px;
+    margin: 8.91px;
   }
 
   /* profession */
-
   .profile__profession {
     max-width: 475.82px;
     width: 100%;
@@ -768,7 +707,6 @@
   }
 
   /* add-button */
-
   .profile__add-button {
     max-width: 475.82px;
     max-height: 84.36px;
@@ -776,7 +714,6 @@
   }
 
   /* add-button-vector */
-
   .profile__add-button-vector {
     max-width: 26.97px;
     max-height: 26.97px;
@@ -788,7 +725,6 @@
 
 @media screen and (max-width: 432px) {
   /* profile */
-
   .profile {
     max-width: 380.66px;
     max-height: 386.06px;
@@ -798,7 +734,6 @@
   }
 
   /* avatar */
-
   .profile__image {
     max-width: 194.4px;
     max-height: 227.79px;
@@ -807,7 +742,6 @@
   }
 
   /* elipse */
-
   .profile__elipse {
     max-width: 161.46px;
     max-height: 161.46px;
@@ -815,7 +749,6 @@
   }
 
   /* content-info */
-
   .profile__info {
     max-width: 380.66px;
     max-height: 67.49px;
@@ -826,7 +759,6 @@
   }
 
   /* name */
-
   .profile__name {
     max-width: 264.57px;
     font-size: 29.68px;
@@ -835,8 +767,7 @@
     margin: 0 auto;
   }
 
-  /* edit-button */
-
+  /* edit-button-profile */
   .profile__edit-button {
     max-width: 24.29px;
     max-height: 24.29px;
@@ -844,8 +775,7 @@
     margin: 5.39px auto 0 13.48px;
   }
 
-  /* edit-button-vector */
-
+  /* edit-button-profile-vector */
   .profile__edit-button-vector {
     max-width: 10.11px;
     max-height: 10.11px;
@@ -853,7 +783,6 @@
   }
 
   /* profession */
-
   .profile__profession {
     max-width: 380.66px;
     width: 100%;
@@ -864,7 +793,6 @@
   }
 
   /* add-button */
-
   .profile__add-button {
     max-width: 380.66px;
     max-height: 67.49px;
@@ -872,7 +800,6 @@
   }
 
   /* add-button-vector */
-
   .profile__add-button-vector {
     max-width: 21.58px;
     height: 21.58px;
@@ -881,10 +808,8 @@
 }
 
 /* -------------  375  ------------- */
-
 @media screen and (max-width: 375px) {
   /* profile */
-
   .profile {
     max-width: 330.44px;
     max-height: 335.13px;
@@ -894,7 +819,6 @@
   }
 
   /* avatar */
-
   .profile__image {
     max-width: 168.75px;
     max-height: 197.74px;
@@ -903,7 +827,6 @@
   }
 
   /* elipse */
-
   .profile__elipse {
     max-width: 140.16px;
     max-height: 140.16px;
@@ -911,7 +834,6 @@
   }
 
   /* content-info */
-
   .profile__info {
     max-width: 330.44px;
     max-height: 58.59px;
@@ -922,7 +844,6 @@
   }
 
   /* name */
-
   .profile__name {
     max-width: 229.67px;
     font-size: 25.77px;
@@ -931,8 +852,7 @@
     margin: 0 auto;
   }
 
-  /* edit-button */
-
+  /* edit-button-profile */
   .profile__edit-button {
     max-width: 21.09px;
     max-height: 21.09px;
@@ -940,8 +860,7 @@
     margin: 4.68px auto 0 11.71px;
   }
 
-  /* edit-button-vector */
-
+  /* edit-button-profile-vector */
   .profile__edit-button-vector {
     max-width: 8.78px;
     max-height: 8.78px;
@@ -949,7 +868,6 @@
   }
 
   /* profession */
-
   .profile__profession {
     max-width: 330.44px;
     width: 100%;
@@ -960,7 +878,6 @@
   }
 
   /* add-button */
-
   .profile__add-button {
     max-width: 330.44px;
     max-height: 58.59px;
@@ -968,7 +885,6 @@
   }
 
   /* add-button-vector */
-
   .profile__add-button-vector {
     max-width: 18.74px;
     max-height: 18.74px;
@@ -977,10 +893,8 @@
 }
 
 /* -------------  320  ------------- */
-
 @media screen and (max-width: 320px) {
   /* profile */
-
   .profile {
     max-width: 282px;
     max-height: 286px;
@@ -990,7 +904,6 @@
   }
 
   /* avatar */
-
   .profile__image {
     max-width: 168.75px;
     max-height: 127.5px;
@@ -1001,16 +914,15 @@
   }
 
   /* elipse */
-
   .profile__elipse {
-    max-width: 120px;
-    max-height: 120px;
+    min-width: 120px;
+    min-height: 120px;
+    object-fit: cover;
     margin: 3.75px 26.25px 3.75px 22.5px;
     padding: 0;
   }
 
   /* profile-info */
-
   .profile__info {
     max-width: 282px;
     max-height: 50px;
@@ -1021,7 +933,6 @@
   }
 
   /* name */
-
   .profile__name {
     max-width: 196px;
     font-size: 22px;
@@ -1031,8 +942,7 @@
     padding: 0;
   }
 
-  /* edit-button */
-
+  /* edit-button-profile */
   .profile__edit-button {
     max-width: 18px;
     max-height: 18px;
@@ -1040,8 +950,7 @@
     margin: 4px auto 0 10px;
   }
 
-  /* edit-button-vector */
-
+  /* edit-button-profile-vector */
   .profile__edit-button-vector {
     max-width: 7.5px;
     max-height: 7.5px;
@@ -1049,7 +958,6 @@
   }
 
   /* profession */
-
   .profile__profession {
     max-width: 282px;
     width: 100%;
@@ -1060,7 +968,6 @@
   }
 
   /* add-button */
-
   .profile__add-button {
     max-width: 282px;
     max-height: 50px;
@@ -1068,7 +975,6 @@
   }
 
   /* add-button-vector */
-
   .profile__add-button-vector {
     max-width: 16px;
     max-height: 16px;

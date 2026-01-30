@@ -17,7 +17,7 @@ import avatarVector from "../../images/Avatar_vector.png";
 import editButton from "../../images/Edit-Button-Vector.png";
 import addButton from "../../images/Vector-add-button.png";
 
-export function Main({
+export default function Main({
   cards,
   onEditProfileClick,
   onEditAvatarClick,
@@ -48,12 +48,12 @@ export function Main({
           />
           <button
             type="button"
-            className="profile__edit-button"
+            className="profile__edit-button-avatar"
             onClick={onEditAvatarClick}
           >
             <img
               src={avatarVector}
-              className="profile__edit-vector"
+              className="profile__edit-avatar-vector"
               alt="editar avatar"
             />
           </button>
@@ -106,7 +106,7 @@ export function Main({
                   onCardLike={onCardLike}
                   onCardDelete={onCardDelete}
                 />
-              )
+              ),
           )}
         </ul>
       </section>

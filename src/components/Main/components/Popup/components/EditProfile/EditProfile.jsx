@@ -4,7 +4,7 @@ import useFormWithValidation from "../../../../../../hooks/useFormWithValidation
 
 export default function EditProfile({
   isOpen = false,
-  onSubmit, // <-- padronizado para onSubmit (App fornece onSubmit)
+  onSubmit, // padronizado para onSubmit (App fornece onSubmit)
   isLoading = false,
   currentUser = {},
   onClose, // opcional, mantido se quiser usar internamente
@@ -21,7 +21,7 @@ export default function EditProfile({
           about: currentUser.about || "",
         },
         {},
-        true
+        true,
       );
     }
   }, [isOpen, currentUser, resetForm]);

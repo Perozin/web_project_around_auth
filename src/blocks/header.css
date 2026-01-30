@@ -1,16 +1,16 @@
+/* src/blocks/header.css */
+
 /* -------------  1280  ------------- */
-
-/* header */
-
+/* container */
 .header {
   max-width: 880px;
   max-height: 74px;
   margin: 45px 200px 0;
   padding: 0;
+  position: relative;
 }
 
-/* Vector */
-
+/* vector */
 .header__vector {
   max-width: 173px;
   max-height: 33px;
@@ -18,6 +18,7 @@
   padding: 0;
 }
 
+/* image */
 .header__vector-image {
   width: 100%;
   height: 100%;
@@ -26,7 +27,6 @@
 }
 
 /* line */
-
 .header__line {
   max-width: 880px;
   max-height: 0px;
@@ -38,89 +38,223 @@
   padding: 0;
 }
 
+/* container email-link */
+.header__auth {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* email */
+.header__email {
+  max-width: 141px;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: right;
+  color: #ffffff;
+  padding: 0;
+  margin-right: 89px;
+}
+
+/* login */
+.header__link {
+  max-width: 103px;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: right;
+  color: #ffffff;
+  text-decoration: none;
+  text-align: center;
+  padding: 0;
+  margin: auto;
+}
+
+/* logout */
+.header__logout {
+  max-width: 33px;
+  width: 100%;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: right;
+  border: none;
+  color: #a9a9a9;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 /* -------------  1152 ------------- */
-
 @media screen and (max-width: 1152px) {
-  /* Header */
-
+  /* container */
   .header {
     max-width: 792px;
     max-height: 66.6px;
+
     margin: 40.5px 107.59px 0;
   }
 
-  /* Vector */
-
+  /* vector */
   .header__vector {
     max-width: 155.7px;
     max-height: 27.9px;
   }
 
   /* line */
-
   .header__line {
     max-width: 792px;
     margin: 36.9px 0 0;
   }
+
+  /* container email-link */
+  .header__auth {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  /* email */
+  .header__email {
+    max-width: 141px;
+    font-size: 18px;
+    line-height: 22px;
+    margin-right: 80px;
+  }
+
+  /* login */
+  .header__link {
+    max-width: 103px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  /* logout */
+  .header__logout {
+    max-width: 33px;
+    font-size: 18px;
+    line-height: 22px;
+    right: 0;
+    top: 0;
+  }
 }
 
 /* -------------  1088  ------------- */
-
 @media screen and (max-width: 1088px) {
-  /* Header */
-
+  /* container */
   .header {
     max-width: 747.96px;
     max-height: 62.89px;
     margin: 38.24px 84.99px 0;
   }
 
-  /* Vector */
-
+  /* vector */
   .header__vector {
     max-width: 147.04px;
     max-height: 26.34px;
   }
 
   /* line */
-
   .header__line {
     max-width: 747.96px;
     margin: 34.84px 0 0;
   }
+
+  /* container email-link */
+  .header__auth {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  /* email */
+  .header__email {
+    max-width: 130px;
+    font-size: 16px;
+    line-height: 20px;
+    margin-right: 60px;
+  }
+
+  /* login */
+  .header__link {
+    max-width: 90px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  /* logout */
+  .header__logout {
+    max-width: 30px;
+    font-size: 16px;
+    line-height: 20px;
+    right: 0;
+    top: 0;
+  }
 }
 
 /* -------------  1024  ------------- */
-
 @media screen and (max-width: 1024px) {
-  /* Header */
-
+  /* container */
   .header {
     max-width: 703.9px;
     max-height: 59.18px;
     margin: 35.98px 79.98px 0;
   }
 
-  /* Vector */
-
+  /* vector */
   .header__vector {
     max-width: 138.37px;
     max-height: 24.78px;
   }
 
   /* line */
-
   .header__line {
     max-width: 703.9px;
     margin: 32.78px 0 0;
   }
+
+  /* container email-link */
+  .header__auth {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  /* email */
+  .header__email {
+    max-width: 110px;
+    font-size: 14px;
+    line-height: 18px;
+    margin-right: 50px;
+  }
+
+  /* login */
+  .header__link {
+    max-width: 80px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  /* logout */
+  .header__logout {
+    max-width: 30px;
+    font-size: 14px;
+    line-height: 18px;
+    right: 0;
+    top: 0;
+  }
 }
 
 /* -------------  896 ------------- */
-
 @media screen and (max-width: 896px) {
   /* header */
-
   .header {
     max-width: 615.91px;
     max-height: 51.78px;
@@ -128,25 +262,52 @@
   }
 
   /* Vector */
-
   .header__vector {
     max-width: 121.07px;
     max-height: 21.68px;
   }
 
   /* line */
-
   .header__line {
     max-width: 615.91px;
     margin: 28.68px 0 0;
   }
+
+  /* container email-link */
+  .header__auth {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  /* email */
+  .header__email {
+    max-width: 100px;
+    font-size: 13px;
+    line-height: 16px;
+    margin-right: 60px;
+  }
+
+  /* login */
+  .header__link {
+    max-width: 70px;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  /* logout */
+  .header__logout {
+    max-width: 30px;
+    font-size: 13px;
+    line-height: 16px;
+    right: 0;
+    top: 0;
+  }
 }
 
 /* -------------  768 ------------- */
-
 @media screen and (max-width: 768px) {
   /* Header */
-
   .header {
     max-width: 527.89px;
     max-height: 44.38px;
@@ -154,14 +315,12 @@
   }
 
   /* Vector */
-
   .header__vector {
     max-width: 103.76px;
     max-height: 18.58px;
   }
 
   /* line */
-
   .header__line {
     max-width: 527.89px;
     margin: 22.86px 0 0;
@@ -169,10 +328,8 @@
 }
 
 /* -------------  656  ------------- */
-
 @media screen and (max-width: 656px) {
   /* Header */
-
   .header {
     max-width: 450.87px;
     max-height: 37.9px;
@@ -180,14 +337,12 @@
   }
 
   /* Vector */
-
   .header__vector {
     max-width: 88.63px;
     max-height: 15.86px;
   }
 
   /* line */
-
   .header__line {
     max-width: 450.87px;
     margin: 19.52px 0 0;
@@ -195,104 +350,199 @@
 }
 
 /* -------------  544  ------------- */
-
 @media screen and (max-width: 544px) {
-  /* Header */
-
+  /* contaniner */
   .header {
     max-width: 475.82px;
-    max-height: 94.48px;
+    max-height: 89px;
     margin: 47.23px 5.08px 0;
   }
 
-  /* Vector */
-
+  /* vector */
   .header__vector {
     max-width: 212.6px;
     max-height: 40.48px;
-    margin: 0 auto 0 45.53px;
   }
 
   /* line */
-
   .header__line {
     max-width: 475.82px;
     box-sizing: border-box;
     margin: 53.95px 0 0;
   }
+
+  /* container email-link */
+  .header__auth {
+    font-size: 24px;
+    line-height: 28px;
+    position: fixed;
+    top: 92px;
+    right: 52.906px;
+  }
+
+  /* email */
+  .header__email {
+    font-size: 20px;
+    line-height: 26px;
+    margin-right: 0;
+  }
+
+  /* login */
+  .header__link {
+    max-width: 120px;
+    font-size: 18px;
+    line-height: 22px;
+    position: fixed;
+    right: 52.906px;
+    top: 47.23px;
+  }
+
+  /* logout */
+  .header__logout {
+    max-width: 39px;
+    font-size: 22px;
+    line-height: 26px;
+    position: fixed;
+    right: 52.906px;
+    top: 46px;
+  }
 }
 
 /* -------------  432  ------------- */
-
 @media screen and (max-width: 432px) {
   /* Header */
-
   .header {
     max-width: 380.66px;
-    max-height: 75.59px;
+    max-height: 87px;
     margin: 37.79px 4.07px 0;
   }
 
   /* Vector */
-
   .header__vector {
     max-width: 170.08px;
     max-height: 32.39px;
-    margin: 0 auto 0 36.43px;
+    margin: 0 auto 0 0;
   }
 
   /* line */
-
   .header__line {
     max-width: 380.66px;
     box-sizing: border-box;
     margin: 43.18px 0 0;
   }
+
+  /* container email-link */
+  .header__auth {
+    font-size: 22px;
+    line-height: 26px;
+    position: fixed;
+    top: 80px;
+    right: 31.281px;
+  }
+
+  /* email */
+  .header__email {
+    font-size: 19px;
+    line-height: 24px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* login */
+  .header__link {
+    max-width: 118px;
+    font-size: 17px;
+    line-height: 20px;
+    position: fixed;
+    right: 31.281px;
+    top: 37.79px;
+  }
+
+  /* logout */
+  .header__logout {
+    max-width: 37px;
+    font-size: 20px;
+    line-height: 24px;
+    position: fixed;
+    right: 31.281px;
+    top: 37.79px;
+  }
 }
 
 /* -------------  375  ------------- */
-
 @media screen and (max-width: 375px) {
-  /* Header */
-
+  /* container */
   .header {
     max-width: 330.44px;
-    max-height: 65.62px;
+    max-height: 85px;
     width: 100%;
     margin: 32.81px auto 0;
   }
 
-  /* Vector */
-
+  /* vector */
   .header__vector {
     max-width: 147.64px;
     max-height: 28.12px;
-    margin: 0 auto 0 31.63px;
+    margin: 0 auto 0 0;
   }
 
   /* line */
-
   .header__line {
     max-width: 330.44px;
     box-sizing: border-box;
     margin: 37.49px auto 0;
   }
+
+  /* container email-link */
+  .header__auth {
+    font-size: 20px;
+    line-height: 24px;
+    position: fixed;
+    top: 65px;
+    right: 18px;
+  }
+
+  /* email */
+  .header__email {
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* login */
+  .header__link {
+    font-size: 16px;
+    line-height: 19px;
+    position: fixed;
+    right: 18.75px;
+    top: 32.81px;
+  }
+
+  /* logout */
+  .header__logout {
+    max-width: 35px;
+    font-size: 18px;
+    line-height: 22px;
+    position: fixed;
+    right: 18px;
+    top: 32.81px;
+  }
 }
 
 /* -------------  320  ------------- */
-
 @media screen and (max-width: 320px) {
-  /* Header */
-
+  /* container */
   .header {
     max-width: 320px;
-    max-height: 56px;
+    max-height: 83px;
     width: 100%;
     margin: 28px 0 0;
   }
 
-  /* Vector */
-
+  /* vector */
   .header__vector {
     max-width: 126px;
     max-height: 24px;
@@ -300,10 +550,49 @@
   }
 
   /* line */
-
   .header__line {
     max-width: 320px;
     box-sizing: border-box;
     margin: 32px 0 0;
+  }
+
+  /* container email-link */
+  .header__auth {
+    position: fixed;
+    top: 60px;
+    right: 19px;
+  }
+
+  /* email */
+  .header__email {
+    max-width: 142px;
+    width: 100%;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    padding: 0;
+    margin: auto;
+  }
+
+  /* login */
+  .header__link {
+    max-width: 142px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: right;
+    margin: auto;
+  }
+
+  /* logout */
+  .header__logout {
+    max-width: 33px;
+    width: 100%;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: right;
+    position: fixed;
+    right: 19px;
+    top: 28px;
   }
 }
