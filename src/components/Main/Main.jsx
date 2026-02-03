@@ -19,41 +19,47 @@ import addButton from "../../images/Vector-add-button.png";
 
 export default function Main({
   cards,
+  activeModal,
+  onUpdateUser,
+  onUpdateAvatar,
   onEditProfileClick,
   onEditAvatarClick,
   onAddPlaceClick,
   onCardLike,
   onCardDelete,
-  popup,
   onClosePopup,
   selectedCard,
   openImagePopup,
   isConfirmPopupOpen,
   closeConfirmPopup,
   handleConfirmDelete,
-  isLoadingDelete,
   handleAddPlace,
+  isLoadingProfile,
+  isLoadingAvatar,
+  isLoadingCard,
+  isLoadingDelete,
 }) {
   const currentUser = useContext(CurrentUserContext);
 
   return (
     <main className="content">
-      {/* --- PERFIL --- */}
+      {/* ================= PROFILE ================= */}
       <section className="profile">
         <div className="profile__image">
           <img
-            src={currentUser?.avatar || avatarPlaceholder}
             className="profile__elipse"
+            src={currentUser?.avatar || avatarPlaceholder}
             alt="Avatar"
           />
+
           <button
-            type="button"
             className="profile__edit-button-avatar"
+            type="button"
             onClick={onEditAvatarClick}
           >
             <img
+              className="profile__edit-button-avatar-vector"
               src={avatarVector}
-              className="profile__edit-avatar-vector"
               alt="editar avatar"
             />
           </button>
@@ -62,16 +68,8 @@ export default function Main({
         <div className="profile__info">
           <h1 className="profile__name">{currentUser?.name || "Seu nome"}</h1>
 
-          <button
-            type="button"
-            className="profile__edit-button"
-            onClick={onEditProfileClick}
-          >
-            <img
-              src={editButton}
-              alt="editar"
-              className="profile__edit-button-vector"
-            />
+          <button className="profile__edit-button" onClick={onEditProfileClick}>
+            <img src={editButton} alt="editar" />
           </button>
 
           <h2 className="profile__profession">
@@ -79,85 +77,70 @@ export default function Main({
           </h2>
         </div>
 
-        <button
-          type="button"
-          className="profile__add-button"
-          onClick={onAddPlaceClick}
-        >
+        <button className="profile__add-button" onClick={onAddPlaceClick}>
           <img
+            class="profile__add-button-vector"
             src={addButton}
             alt="adicionar"
-            className="profile__add-button-vector"
           />
         </button>
       </section>
 
-      {/* --- LISTA DE CARDS --- */}
-      <section className="elements page__section">
+      {/* ================= CARDS ================= */}
+      <section className="elements">
         <ul className="elements__cards">
-          {cards.map(
-            (card) =>
-              card && (
-                <Card
-                  key={card._id}
-                  card={card}
-                  currentUser={currentUser}
-                  onImageClick={openImagePopup}
-                  onCardLike={onCardLike}
-                  onCardDelete={onCardDelete}
-                />
-              ),
-          )}
+          {cards.map((card) => (
+            <Card
+              key={card._id}
+              card={card}
+              currentUser={currentUser}
+              onImageClick={openImagePopup}
+              onCardLike={onCardLike}
+              onCardDelete={onCardDelete}
+            />
+          ))}
         </ul>
       </section>
 
-      {/* --- POPUPS --- */}
-
-      {/* Editar Perfil */}
-      {popup && popup.title === "Editar perfil" && (
-        <Popup onClose={onClosePopup} title={popup.title} isOpen={true}>
+      {/* ================= MODALS ================= */}
+      {activeModal === "profile" && (
+        <Popup title="Editar perfil" onClose={onClosePopup} isOpen>
           <EditProfile
-            isOpen={true}
             currentUser={currentUser}
-            onSubmit={popup.children.props.onSubmit}
+            onSubmit={onUpdateUser}
             onClose={onClosePopup}
-            isLoading={popup.children.props.isLoading}
+            isLoading={isLoadingProfile}
           />
         </Popup>
       )}
 
-      {/* Alterar Avatar */}
-      {popup && popup.title === "Alterar avatar" && (
-        <Popup onClose={onClosePopup} title={popup.title} isOpen={true}>
+      {activeModal === "avatar" && (
+        <Popup title="Alterar avatar" onClose={onClosePopup} isOpen>
           <EditAvatar
-            isOpen={true}
-            onSubmit={popup.children.props.onSubmit}
+            onSubmit={onUpdateAvatar}
             onClose={onClosePopup}
-            isLoading={popup.children.props.isLoading}
+            isLoading={isLoadingAvatar}
           />
         </Popup>
       )}
 
-      {/* Novo Local */}
-      {popup && popup.title === "Novo local" && (
-        <Popup onClose={onClosePopup} title={popup.title} isOpen={true}>
+      {activeModal === "card" && (
+        <Popup title="Novo local" onClose={onClosePopup} isOpen>
           <NewCard
-            isOpen={true}
             onAddPlace={handleAddPlace}
             onClose={onClosePopup}
+            isLoading={isLoadingCard}
           />
         </Popup>
       )}
 
-      {/* Imagem ampliada */}
-      {popup && popup.title === "" && selectedCard && (
+      {activeModal === "image" && selectedCard && (
         <ImagePopup card={selectedCard} onClose={onClosePopup} />
       )}
 
-      {/* Confirmação de Delete */}
       {isConfirmPopupOpen && (
         <PopupWithConfirmation
-          isOpen={isConfirmPopupOpen}
+          isOpen
           onClose={closeConfirmPopup}
           onConfirm={handleConfirmDelete}
           isLoading={isLoadingDelete}

@@ -10,7 +10,7 @@
   flex-direction: row;
 }
 
-/* avatar */
+/* container-avatar */
 .profile__image {
   max-width: 168.75px;
   max-height: 127.5px;
@@ -21,7 +21,7 @@
   overflow: hidden;
 }
 
-/* elipse */
+/* elipse-container-avatar */
 .profile__elipse {
   width: 120px;
   height: 120px;
@@ -42,31 +42,37 @@
 }
 
 /* edit-button-avatar */
-.profile__edit-button {
+.profile__edit-button-avatar {
   max-width: 24px;
   max-height: 24px;
   width: 100%;
+  height: 100%;
   box-sizing: border-box;
-  border: 1px solid #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 15px 0 0 18px;
-  padding: 0;
+  background-color: transparent;
+  border: none;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+  position: absolute;
+  inset: 0;
+  top: 50%;
+  left: 50%;
 }
 
-.profile__edit-avatar-vector {
-  opacity: 0;
+/* edit-button-avatar-vector */
+.profile__edit-button-avatar-vector {
   background-color: transparent;
   transform: translate(-50%, -50%);
   transition: opacity 0.3s ease;
   cursor: pointer;
   position: absolute;
+  inset: 0;
   top: 50%;
   left: 50%;
+  opacity: 0;
 }
 
-.profile__edit-avatar-vector:hover {
+.profile__edit-button-avatar-vector:hover {
   opacity: 1;
 }
 
@@ -198,14 +204,14 @@
     margin: 36px 0 0;
   }
 
-  /* avatar */
+  /* container-avatar */
   .profile__image {
     max-width: 151.87px;
     max-height: 114.75px;
     margin: -3.37px 0 -3.37px -20.25px;
   }
 
-  /* elipse */
+  /* elipse-container-avatar */
   .profile__elipse {
     max-width: 108px;
     max-height: 108px;
@@ -272,14 +278,14 @@
     margin: 33.99px 0 0;
   }
 
-  /* avatar */
+  /* container-avatar */
   .profile__image {
     max-width: 143.42px;
     max-height: 108.36px;
     margin: -3.18px 0 -3.05px -19.12px;
   }
 
-  /* elipse */
+  /* elipse-container-avatar */
   .profile__elipse {
     max-width: 101.99px;
     max-height: 101.99px;
@@ -345,14 +351,14 @@
     margin: 31.98px 0 0;
   }
 
-  /* avatar */
+  /* container-avatar */
   .profile__image {
     max-width: 134.97px;
     max-height: 101.97px;
     margin: -2.99px 0 -2.87px -17.99px;
   }
 
-  /* elipse */
+  /* elipse-container-avatar */
   .profile__elipse {
     max-width: 95.98px;
     max-height: 95.98px;
@@ -418,14 +424,14 @@
     margin: 27.98px 5.641px 0;
   }
 
-  /* avatar */
+  /* container-avatar */
   .profile__image {
     max-width: 118.09px;
     max-height: 89.22px;
     margin: -2.61px 0 -2.51px -15.74px;
   }
 
-  /* elipse */
+  /* elipse-container-avatar */
   .profile__elipse {
     max-width: 83.98px;
     max-height: 83.98px;
@@ -491,14 +497,14 @@
     margin: 23.98px 0 0;
   }
 
-  /* avatar */
+  /* container-avatar */
   .profile__image {
     max-width: 101.21px;
     max-height: 76.47px;
     margin: -2.23px 0 -2.15px -13.49px;
   }
 
-  /* elipse */
+  /* elipse-container-avatar */
   .profile__elipse {
     max-width: 71.97px;
     max-height: 71.97px;
@@ -564,14 +570,14 @@
     margin: 20.48px 4.16px 0;
   }
 
-  /* avatar */
+  /* container-avatar */
   .profile__image {
     max-width: 86.44px;
     max-height: 65.31px;
     margin: -1.9px 0 -1.83px -11.52px;
   }
 
-  /* elipse */
+  /* elipse-container-avatar */
   .profile__elipse {
     max-width: 61.46px;
     max-height: 61.46px;
@@ -639,14 +645,14 @@
     flex-direction: column;
   }
 
-  /* avatar */
+  /* container-avatar */
   .profile__image {
     max-width: 243px;
     max-height: 284.73px;
     margin: -6.31px auto 0;
   }
 
-  /* elipse */
+  /* elipse-container-avatar */
   .profile__elipse {
     max-width: 201.82px;
     max-height: 201.82px;
@@ -733,7 +739,7 @@
     flex-direction: column;
   }
 
-  /* avatar */
+  /* container-avatar */
   .profile__image {
     max-width: 194.4px;
     max-height: 227.79px;
@@ -741,7 +747,7 @@
     margin: -5.05px auto 0;
   }
 
-  /* elipse */
+  /* elipse-container-avatar */
   .profile__elipse {
     max-width: 161.46px;
     max-height: 161.46px;
@@ -818,7 +824,7 @@
     flex-direction: column;
   }
 
-  /* avatar */
+  /* container-avatar */
   .profile__image {
     max-width: 168.75px;
     max-height: 197.74px;
@@ -826,7 +832,7 @@
     margin: -4.39px auto 0;
   }
 
-  /* elipse */
+  /* elipse-container-avatar */
   .profile__elipse {
     max-width: 140.16px;
     max-height: 140.16px;
@@ -903,7 +909,7 @@
     flex-direction: column;
   }
 
-  /* avatar */
+  /* container-avatar */
   .profile__image {
     max-width: 168.75px;
     max-height: 127.5px;
@@ -913,7 +919,7 @@
     padding: 0;
   }
 
-  /* elipse */
+  /* elipse-container-avatar */
   .profile__elipse {
     min-width: 120px;
     min-height: 120px;

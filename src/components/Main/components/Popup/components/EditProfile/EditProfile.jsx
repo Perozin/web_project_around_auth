@@ -1,5 +1,6 @@
 // src/components/Main/components/Popup/components/EditProfile/EditProfile.jsx
-import React from "react";
+import React, { useEffect } from "react";
+
 import useFormWithValidation from "../../../../../../hooks/useFormWithValidation.js";
 
 export default function EditProfile({
@@ -9,40 +10,62 @@ export default function EditProfile({
   currentUser = {},
   onClose, // opcional, mantido se quiser usar internamente
 }) {
+  // ===============================
+  // FORM STATE (custom hook)
+  // ===============================
   const { values, errors, isValid, handleChange, resetForm } =
-    useFormWithValidation({ name: "", about: "" });
+    useFormWithValidation({
+      name: "",
+      about: "",
+    });
 
-  // Preenche inputs quando o popup abre ou currentUser muda
-  React.useEffect(() => {
-    if (isOpen && currentUser) {
-      resetForm(
-        {
-          name: currentUser.name || "",
-          about: currentUser.about || "",
-        },
-        {},
-        true,
-      );
-    }
-  }, [isOpen, currentUser, resetForm]);
+  // ======================================================
+  // SINCRONIZA DADOS DO USUÁRIO → INPUTS
+  // ======================================================
+  // Sempre que:
+  //  - popup abrir
+  //  - currentUser atualizar (login, update profile, etc)
+  // Preenche automaticamente os campos
+  // ======================================================
+  useEffect(() => {
+    if (!currentUser) return;
 
-  // Submit local que delega para o onSubmit recebido do App
+    resetForm(
+      {
+        name: currentUser.name || "",
+        about: currentUser.about || "",
+      },
+      {},
+      true,
+    );
+  }, [currentUser, isOpen, resetForm]);
+
+  // ======================================================
+  // SUBMIT
+  // ======================================================
   function handleSubmit(e) {
     e.preventDefault();
+
+    // proteção extra
     if (!isValid || isLoading) return;
 
-    if (typeof onSubmit === "function") {
-      onSubmit({
-        name: values.name,
-        about: values.about,
-      });
-    } else {
+    if (typeof onSubmit !== "function") {
       console.warn("EditProfile: onSubmit não é função");
+      return;
     }
+
+    onSubmit({
+      name: values?.name || "",
+      about: values?.about || "",
+    });
   }
 
+  // ======================================================
+  // RENDER
+  // ======================================================
   return (
     <form className="popup__form" onSubmit={handleSubmit} noValidate>
+      {/* ================= NAME ================= */}
       <input
         type="text"
         name="name"
@@ -58,6 +81,7 @@ export default function EditProfile({
         placeholder="Nome"
         disabled={isLoading}
       />
+
       <span
         className={`popup__input-error name-input-error ${
           errors.name ? "popup__error_visible" : ""
@@ -66,6 +90,7 @@ export default function EditProfile({
         {errors.name}
       </span>
 
+      {/* ================= ABOUT ================= */}
       <input
         type="text"
         name="about"
@@ -81,6 +106,7 @@ export default function EditProfile({
         placeholder="Sobre"
         disabled={isLoading}
       />
+
       <span
         className={`popup__input-error about-input-error ${
           errors.about ? "popup__error_visible" : ""
@@ -89,6 +115,7 @@ export default function EditProfile({
         {errors.about}
       </span>
 
+      {/* ================= BUTTON ================= */}
       <button
         type="submit"
         disabled={!isValid || isLoading}

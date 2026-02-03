@@ -1,87 +1,78 @@
 // src/utils/api.js
 class Api {
-  constructor({ baseUrl, headers }) {
+  constructor({ baseUrl, token }) {
     this._baseUrl = baseUrl;
-    this._headers = headers;
+    this._token = token;
+  }
+
+  _getHeaders() {
+    return {
+      authorization: this._token,
+      'Content-Type': 'application/json',
+    };
   }
 
   async _request(path, options = {}) {
     const res = await fetch(`${this._baseUrl}${path}`, {
-      headers: this._headers,
+      headers: this._getHeaders(),
       ...options,
     });
+
     if (!res.ok) {
       const text = await res.text();
       throw new Error(`API error ${res.status}: ${text}`);
     }
+
     return res.json();
   }
 
-  // --- USER ---
+  // USER
   getUserInfo() {
     return this._request('/users/me');
   }
 
-  setUserInfo({ name, about }) {
+  setUserInfo(data) {
     return this._request('/users/me', {
       method: 'PATCH',
-      body: JSON.stringify({ name, about }),
+      body: JSON.stringify(data),
     });
   }
 
-  setUserAvatar({ avatar }) {
+  setUserAvatar(data) {
     return this._request('/users/me/avatar', {
       method: 'PATCH',
-      body: JSON.stringify({ avatar }),
+      body: JSON.stringify(data),
     });
   }
 
-  // --- CARDS ---
-  getCardList() {
+  // CARDS
+  getInitialCards() {
     return this._request('/cards');
   }
 
-  // --- OBTÉM CARDS INICIAIS ---
-  getInitialCards() {
-    return this.getCardList();
-  }
-
-  addCard({ name, link }) {
+  addCard(data) {
     return this._request('/cards', {
       method: 'POST',
-      body: JSON.stringify({ name, link }),
+      body: JSON.stringify(data),
     });
   }
 
-  deleteCard(cardId) {
-    return this._request(`/cards/${cardId}`, {
+  deleteCard(id) {
+    return this._request(`/cards/${id}`, {
       method: 'DELETE',
     });
   }
-  
-  // --- LIKES ---
-  changeLikeCardStatus(cardId, like) {
-    return this._request(`/cards/${cardId}/likes`, {
+
+  changeLikeCardStatus(id, like) {
+    return this._request(`/cards/${id}/likes`, {
       method: like ? 'PUT' : 'DELETE',
     });
   }
-
-  getInitialData() {
-    return Promise.all([this.getUserInfo(), this.getCardList()]);
-  }  
 }
 
-
-// CONFIG
-const BASE_URL = 'https://around-api.pt-br.tripleten-services.com/v1';
-const TOKEN = '80bec454-e86a-45fb-87e6-90e02b604577'; 
-
 const api = new Api({
-  baseUrl: BASE_URL,
-  headers: {
-    authorization: TOKEN,
-    'Content-Type': 'application/json',
-  },
+  baseUrl: 'https://around-api.pt-br.tripleten-services.com/v1',
+  token: '80bec454-e86a-45fb-87e6-90e02b604577', 
 });
 
 export default api;

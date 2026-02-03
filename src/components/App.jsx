@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
-import Header from "./Header/Header";
-import Footer from "./Footer/Footer";
-import Main from "./Main/Main";
+import Header from "./Header/Header.jsx";
+import Footer from "./Footer/Footer.jsx";
+import Main from "./Main/Main.jsx";
 
 import Login from "./Login/Login";
 import Register from "./Register/Register";
@@ -12,51 +12,76 @@ import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 import InfoTooltip from "./InfoTooltip/InfoTooltip";
 
 import CurrentUserContext from "../contexts/CurrentUserContext";
+
 import api from "../utils/api";
 import * as auth from "../utils/auth";
 
 export default function App() {
   const navigate = useNavigate();
 
+  // ======================================================
+  // AUTH
+  // ======================================================
   const [loggedIn, setLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
+
+  // ======================================================
+  // DATA
+  // ======================================================
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
+
+  // ======================================================
+  // UI STATE
+  // ======================================================
+  const [activeModal, setActiveModal] = useState(null); // modal único
+  const [selectedCard, setSelectedCard] = useState(null);
+
+  const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState(false);
+  const [cardToDelete, setCardToDelete] = useState(null);
 
   const [isTooltipOpen, setIsTooltipOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  // Check token ao carregar
+  const [isLoadingProfile, setIsLoadingProfile] = useState(false);
+  const [isLoadingAvatar, setIsLoadingAvatar] = useState(false);
+  const [isLoadingCard, setIsLoadingCard] = useState(false);
+  const [isLoadingDelete, setIsLoadingDelete] = useState(false);
+
+  // ======================================================
+  // TOKEN CHECK (auto login)
+  // ======================================================
   useEffect(() => {
     const token = localStorage.getItem("token");
-
-    if (!token) {
-      setLoggedIn(false);
-      return;
-    }
+    if (!token) return;
 
     auth
       .checkToken(token)
       .then((res) => {
         setLoggedIn(true);
         setEmail(res.data.email);
+        navigate("/");
       })
-      .catch(() => {
-        localStorage.removeItem("token");
-        setLoggedIn(false);
-      });
-  }, []);
+      .catch(() => localStorage.removeItem("token"));
+  }, [navigate]);
 
-  // Carregar dados SOMENTE quando logado
+  // ======================================================
+  // LOAD USER + CARDS
+  // ======================================================
   useEffect(() => {
     if (!loggedIn) return;
 
-    api.getUserInfo().then(setCurrentUser).catch(console.error);
-
-    api.getInitialCards().then(setCards).catch(console.error);
+    Promise.all([api.getUserInfo(), api.getInitialCards()])
+      .then(([user, cardsData]) => {
+        setCurrentUser(user);
+        setCards(cardsData);
+      })
+      .catch(console.error);
   }, [loggedIn]);
 
-  // LOGIN
+  // ======================================================
+  // AUTH HANDLERS
+  // ======================================================
   function handleLogin(email, password) {
     auth
       .authorize(email, password)
@@ -72,7 +97,6 @@ export default function App() {
       });
   }
 
-  // REGISTER
   function handleRegister(email, password) {
     auth
       .register(email, password)
@@ -86,7 +110,6 @@ export default function App() {
       });
   }
 
-  // LOGOUT
   function handleSignOut() {
     localStorage.removeItem("token");
     setLoggedIn(false);
@@ -94,6 +117,100 @@ export default function App() {
     navigate("/signin");
   }
 
+  // ======================================================
+  // MODALS
+  // ======================================================
+  const closeAllModals = () => {
+    setActiveModal(null);
+    setSelectedCard(null);
+    setIsConfirmPopupOpen(false);
+  };
+
+  const openProfile = () => setActiveModal("profile");
+  const openAvatar = () => setActiveModal("avatar");
+  const openCard = () => setActiveModal("card");
+
+  const openImagePopup = (card) => {
+    setSelectedCard(card);
+    setActiveModal("image");
+  };
+
+  // ======================================================
+  // PROFILE ACTIONS
+  // ======================================================
+
+  function handleUpdateUser({ name, about }) {
+    setIsLoadingProfile(true);
+
+    return api
+      .setUserInfo({ name, about })
+      .then((updatedUser) => {
+        setCurrentUser(updatedUser);
+        closeAllModals();
+      })
+      .catch(console.error)
+      .finally(() => setIsLoadingProfile(false));
+  }
+
+  function handleUpdateAvatar({ avatar }) {
+    setIsLoadingAvatar(true);
+
+    return api
+      .setUserAvatar({ avatar })
+      .then((updatedUser) => {
+        setCurrentUser(updatedUser);
+        closeAllModals();
+      })
+      .catch(console.error)
+      .finally(() => setIsLoadingAvatar(false));
+  }
+
+  // ======================================================
+  // CARD ACTIONS
+  // ======================================================
+  function handleCardLike(card) {
+    api
+      .changeLikeCardStatus(card._id, !card.isLiked)
+      .then((newCard) =>
+        setCards((prev) => prev.map((c) => (c._id === card._id ? newCard : c))),
+      )
+      .catch(console.error);
+  }
+
+  function handleDeleteRequest(card) {
+    setCardToDelete(card);
+    setIsConfirmPopupOpen(true);
+  }
+
+  function handleConfirmDelete() {
+    setIsLoadingDelete(true);
+
+    api
+      .deleteCard(cardToDelete._id)
+      .then(() => {
+        setCards((prev) => prev.filter((c) => c._id !== cardToDelete._id));
+        closeAllModals();
+      })
+      .catch(console.error)
+      .finally(() => setIsLoadingDelete(false));
+  }
+
+  function handleAddPlace({ name, link }) {
+    setIsLoadingCard(true);
+
+    api
+      .addCard({ name, link })
+      .then((newCard) => {
+        setCards((prev) => [newCard, ...prev]);
+        closeAllModals();
+      })
+      .catch(console.error)
+      .finally(() => setIsLoadingCard(false));
+  }
+
+  // ======================================================
+  // RENDER
+  // ======================================================
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -104,34 +221,38 @@ export default function App() {
             path="/"
             element={
               <ProtectedRoute loggedIn={loggedIn}>
-                <Main cards={cards} />
+                <Main
+                  cards={cards}
+                  activeModal={activeModal}
+                  onUpdateUser={handleUpdateUser}
+                  onUpdateAvatar={handleUpdateAvatar}
+                  onEditProfileClick={openProfile}
+                  onEditAvatarClick={openAvatar}
+                  onAddPlaceClick={openCard}
+                  onCardLike={handleCardLike}
+                  onCardDelete={handleDeleteRequest}
+                  openImagePopup={openImagePopup}
+                  selectedCard={selectedCard}
+                  isConfirmPopupOpen={isConfirmPopupOpen}
+                  closeConfirmPopup={() => setIsConfirmPopupOpen(false)}
+                  handleConfirmDelete={handleConfirmDelete}
+                  onClosePopup={closeAllModals}
+                  handleAddPlace={handleAddPlace}
+                  isLoadingProfile={isLoadingProfile}
+                  isLoadingAvatar={isLoadingAvatar}
+                  isLoadingCard={isLoadingCard}
+                  isLoadingDelete={isLoadingDelete}
+                />
               </ProtectedRoute>
             }
           />
 
-          <Route
-            path="/signin"
-            element={
-              loggedIn ? (
-                <Navigate to="/" replace />
-              ) : (
-                <Login onLogin={handleLogin} />
-              )
-            }
-          />
-
+          <Route path="/signin" element={<Login onLogin={handleLogin} />} />
           <Route
             path="/signup"
-            element={
-              loggedIn ? (
-                <Navigate to="/" replace />
-              ) : (
-                <Register onRegister={handleRegister} />
-              )
-            }
+            element={<Register onRegister={handleRegister} />}
           />
-
-          <Route path="*" element={<Navigate to="/signin" replace />} />
+          <Route path="*" element={<Navigate to="/signin" />} />
         </Routes>
 
         <Footer />
@@ -141,9 +262,7 @@ export default function App() {
           isSuccess={isSuccess}
           onClose={() => {
             setIsTooltipOpen(false);
-            if (isSuccess) {
-              navigate("/signin");
-            }
+            if (isSuccess) navigate("/signin");
           }}
         />
       </div>
